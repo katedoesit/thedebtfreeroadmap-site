@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Debt-Free Roadmap — Pay off debt without the spiral</title>
+<meta name="description" content="A step-by-step debt payoff workbook with a live tracker, budget planner, and snowball/avalanche method picker. Made for real budgets, not Pinterest ones.">
+<style>
+  :root{
+    --ink:#111720;
+    --paper:#f4efe5;
+    --paper2:#e9e1d4;
+    --surface:#ffffff;
+    --coral:#ff5a52;
+    --lime:#d8ff57;
+    --blue:#9bc8ff;
+    --muted:#686d72;
+    --line:rgba(17,23,32,.18);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#f4efe5;
+      --paper:#161c27;
+      --paper2:#1f2733;
+      --surface:#1c2431;
+      --coral:#ff6a63;
+      --lime:#d8ff57;
+      --blue:#9bc8ff;
+      --muted:#a3abb5;
+      --line:rgba(244,239,229,.2);
+    }
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      linear-gradient(var(--line) 1px, transparent 1px) 0 0/40px 40px,
+      linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0/40px 40px,
+      var(--paper);
+    background-attachment:fixed;
+    color:var(--ink);
+    font-family:Arial,Helvetica,sans-serif;
+    line-height:1.6;
+  }
+  em{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-style:italic;color:var(--coral);}
+  .mono{font-family:"Courier New",Courier,monospace;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 24px;max-width:1080px;margin:0 auto;
+  }
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);}
+  .mark{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;background:var(--coral);color:#fff;
+    font-family:"Courier New",monospace;font-weight:700;font-size:.85rem;
+    border:2px solid var(--ink);transform:rotate(-3deg);
+  }
+  .brand-name{font-weight:800;letter-spacing:.02em;text-transform:uppercase;font-size:.85rem;}
+  .nav-cta{
+    background:var(--coral);color:var(--ink);border:2px solid var(--ink);
+    padding:10px 18px;font-weight:800;text-decoration:none;font-size:.85rem;
+    box-shadow:3px 3px 0 var(--ink);
+  }
+
+  .hero{max-width:1080px;margin:40px auto 0;padding:0 24px;}
+  .eyebrow{
+    display:flex;align-items:center;gap:10px;
+    font-family:"Courier New",monospace;font-size:.72rem;letter-spacing:.05em;
+    text-transform:uppercase;color:var(--muted);margin-bottom:18px;
+  }
+  .eyebrow .bar{width:22px;height:2px;background:var(--coral);}
+  h1{
+    font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.02;margin:0 0 20px;
+    font-weight:800;letter-spacing:-.02em;
+  }
+  .lede{font-size:1.15rem;color:var(--muted);max-width:520px;margin:0 0 28px;}
+  .hero-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-bottom:32px;}
+  .price-tag{font-size:1.4rem;font-weight:800;}
+  .price-tag .was{font-size:1rem;color:var(--muted);text-decoration:line-through;margin-right:8px;font-weight:400;}
+  .btn{
+    display:inline-block;background:var(--coral);color:var(--ink);
+    border:2px solid var(--ink);padding:16px 30px;font-weight:800;
+    font-size:1rem;text-decoration:none;box-shadow:5px 5px 0 var(--ink);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--ink);}
+  .btn.small{padding:10px 18px;font-size:.85rem;box-shadow:3px 3px 0 var(--ink);}
+
+  .tags-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
+  .tag{
+    font-family:"Courier New",monospace;font-size:.68rem;font-weight:700;
+    letter-spacing:.04em;padding:6px 12px;border:2px solid var(--ink);
+    background:var(--surface);
+  }
+  .tag.lime{background:var(--lime);}
+
+  .stats{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+    margin-bottom:60px;
+  }
+  .stats div{padding:18px 16px;border-left:1px solid var(--line);}
+  .stats div:first-child{border-left:none;}
+  .stats b{display:block;font-size:1.6rem;font-weight:800;}
+  .stats span{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;}
+
+  section{max-width:1080px;margin:0 auto;padding:60px 24px;}
+  .section-head{max-width:640px;margin-bottom:40px;}
+  .num{font-family:"Courier New",monospace;font-size:.7rem;color:var(--coral);letter-spacing:.05em;font-weight:700;}
+  h2{font-size:clamp(1.6rem,3.5vw,2.4rem);margin:.4rem 0 0;font-weight:800;letter-spacing:-.01em;}
+
+  .points{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .point{
+    background:var(--surface);border:2px solid var(--ink);padding:22px;
+    display:flex;gap:14px;align-items:flex-start;
+  }
+  .point .chk{
+    flex:0 0 auto;width:28px;height:28px;background:var(--lime);
+    border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;
+    font-weight:800;
+  }
+  .point p{margin:0;font-weight:700;}
+
+  .roadmap-list{border-top:2px solid var(--ink);}
+  .rm-item{
+    display:flex;gap:20px;align-items:baseline;padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .rm-item .n{font-family:"Courier New",monospace;color:var(--muted);font-size:.85rem;flex:0 0 32px;}
+  .rm-item .t{font-weight:700;}
+
+  .quote{
+    background:var(--ink);color:var(--paper);padding:44px 36px;
+    transform:rotate(-.4deg);margin:60px 0;
+  }
+  .quote .tag-label{
+    font-family:"Courier New",monospace;font-size:.68rem;color:var(--lime);
+    letter-spacing:.05em;text-transform:uppercase;font-weight:700;margin-bottom:14px;display:block;
+  }
+  .quote p{font-size:1.3rem;margin:0;font-weight:500;line-height:1.4;}
+
+  .final-cta{
+    text-align:center;background:var(--paper2);border:2px solid var(--ink);
+    padding:60px 24px;margin:0 24px 80px;max-width:1032px;
+  }
+  .final-cta h2{margin-bottom:14px;}
+  .final-cta p{color:var(--muted);max-width:440px;margin:0 auto 28px;}
+  .reassure{font-size:.78rem;color:var(--muted);margin-top:16px;font-family:"Courier New",monospace;}
+
+  footer{
+    border-top:2px solid var(--ink);padding:28px 24px;text-align:center;
+    font-size:.78rem;color:var(--muted);
+  }
+
+  @media (max-width:640px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .stats div:nth-child(3){border-left:none;}
+    .points{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="brand" href="#top">
+    <span class="mark">DF</span>
+    <span class="brand-name">Debt-Free Roadmap</span>
+  </a>
+  <a class="nav-cta" href="https://stan.store/kate_doesit/p/the-debtfree-roadmap">Get My Roadmap →</a>
+</header>
+
+<div class="hero" id="top">
+  <div class="eyebrow"><span class="bar"></span> A workbook for the financially overwhelmed &middot; made for real budgets, not Pinterest ones</div>
+  <h1>Pay off debt<br>without the <em>spiral.</em></h1>
+  <p class="lede">A step-by-step planner with a live debt tracker, budget planner, and payoff method picker — built for people who need it broken down, not dressed up.</p>
+
+  <div class="hero-actions">
+    <span class="price-tag">$49</span>
+    <a class="btn" href="https://stan.store/kate_doesit/p/the-debtfree-roadmap">Download Now →</a>
+  </div>
+
+  <div class="tags-row">
+    <div class="tag">STEP BY STEP</div>
+    <div class="tag lime">NO SHAME, EVER</div>
+    <div class="tag">INSTANT DOWNLOAD</div>
+  </div>
+
+  <div class="stats">
+    <div><b>9</b><span>guided sections</span></div>
+    <div><b>1</b><span>task per page</span></div>
+    <div><b>0</b><span>jargon or spreadsheets</span></div>
+    <div><b>5-MIN</b><span>monthly check-in</span></div>
+  </div>
+</div>
+
+<section id="for-you">
+  <div class="section-head">
+    <span class="num">WHO THIS IS FOR</span>
+    <h2>This guide is for you if you're looking to:</h2>
+  </div>
+  <div class="points">
+    <div class="point"><span class="chk">✓</span><p>Get out of the "I don't even know where to start" freeze</p></div>
+    <div class="point"><span class="chk">✓</span><p>Track your debts and money in one simple place, no formulas</p></div>
+    <div class="point"><span class="chk">✓</span><p>Find extra cash to throw at debt, even on a tight budget</p></div>
+    <div class="point"><span class="chk">✓</span><p>Stay consistent with a 5-minute monthly check-in, not a spiral</p></div>
+  </div>
+</section>
+
+<section id="inside">
+  <div class="section-head">
+    <span class="num">WHAT'S INSIDE</span>
+    <h2>Nine sections. One task each. In order.</h2>
+  </div>
+  <div class="roadmap-list">
+    <div class="rm-item"><span class="n">00</span><span class="t">Start</span></div>
+    <div class="rm-item"><span class="n">01</span><span class="t">How this works</span></div>
+    <div class="rm-item"><span class="n">02</span><span class="t">Your method — snowball or avalanche</span></div>
+    <div class="rm-item"><span class="n">03</span><span class="t">Your money &amp; debt — live tracker</span></div>
+    <div class="rm-item"><span class="n">04</span><span class="t">Extra payment — find cash in your budget</span></div>
+    <div class="rm-item"><span class="n">05</span><span class="t">Journal — log your progress over time</span></div>
+    <div class="rm-item"><span class="n">06</span><span class="t">Ask for help</span></div>
+    <div class="rm-item"><span class="n">07</span><span class="t">Check-in — a 5-minute monthly ritual</span></div>
+    <div class="rm-item"><span class="n">08</span><span class="t">Keep going — your action plan</span></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="quote">
+    <span class="tag-label">Real talk</span>
+    <p>You are not "bad with money." Nobody ever actually taught you this. That's it — that's the whole secret.</p>
+  </div>
+</div>
+
+<div class="final-cta">
+  <span class="num">READY?</span>
+  <h2>Get the roadmap — $49</h2>
+  <p>One-time payment. Instant download. Works offline, right in your browser, for as long as you need it.</p>
+  <a class="btn" href="https://stan.store/kate_doesit/p/the-debtfree-roadmap">Download Now →</a>
+  <div class="reassure">Secure checkout via Stan &middot; delivered instantly to your inbox</div>
+</div>
+
+<footer>
+  Independent, self-made workbook. Not financial advice — just a plan that's actually easy to follow.
+</footer>
+
+</body>
+</html>
