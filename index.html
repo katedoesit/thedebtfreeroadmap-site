@@ -125,6 +125,21 @@
   }
   .point p{margin:0;font-weight:700;}
 
+  .approach-intro{font-size:1.05rem;color:var(--muted);max-width:620px;margin:-16px 0 36px;}
+  .steps{display:flex;flex-direction:column;gap:0;border-top:2px solid var(--ink);}
+  .step{
+    display:grid;grid-template-columns:64px 1fr;gap:20px;
+    padding:26px 0;border-bottom:2px solid var(--ink);
+  }
+  .step .sn{
+    font-family:"Courier New",monospace;font-weight:800;font-size:1rem;
+    color:var(--surface);background:var(--coral);
+    width:40px;height:40px;display:flex;align-items:center;justify-content:center;
+    border:2px solid var(--ink);
+  }
+  .step h3{margin:0 0 8px;font-size:1.15rem;font-weight:800;}
+  .step p{margin:0;color:var(--muted);max-width:520px;}
+
   .roadmap-list{border-top:2px solid var(--ink);}
   .rm-item{
     display:flex;gap:20px;align-items:baseline;padding:16px 0;
@@ -160,6 +175,7 @@
     .stats{grid-template-columns:repeat(2,1fr);}
     .stats div:nth-child(3){border-left:none;}
     .points{grid-template-columns:1fr;}
+    .step{grid-template-columns:40px 1fr;gap:14px;}
   }
 </style>
 </head>
@@ -207,6 +223,37 @@
     <div class="point"><span class="chk">✓</span><p>Track your debts and money in one simple place, no formulas</p></div>
     <div class="point"><span class="chk">✓</span><p>Find extra cash to throw at debt, even on a tight budget</p></div>
     <div class="point"><span class="chk">✓</span><p>Stay consistent with a 5-minute monthly check-in, not a spiral</p></div>
+  </div>
+</section>
+
+<section id="approach">
+  <div class="section-head">
+    <span class="num">THE THINKING BEHIND IT</span>
+    <h2>Debt payoff isn't a formula. It's a system that fits your life.</h2>
+  </div>
+  <p class="approach-intro">Most debt advice starts with a spreadsheet and assumes you're already organized, already motivated, already have $500 of "extra" sitting around. This roadmap starts somewhere more honest: exactly where you are right now.</p>
+  <div class="steps">
+    <div class="step">
+      <span class="sn">01</span>
+      <div>
+        <h3>See what you're actually up against</h3>
+        <p>Before anything else, you need the full picture — every balance, every rate, every minimum, laid out in one place. No formulas, no guessing, no avoiding the number. Just the truth, made simple enough to look at.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="sn">02</span>
+      <div>
+        <h3>Build the system that fits you, not a stranger's spreadsheet</h3>
+        <p>Snowball or avalanche. Aggressive or steady. There's no single "right" way to pay off debt — only the way you'll actually stick with. This roadmap helps you choose the method and pace that match your goals, your income, and your life right now.</p>
+      </div>
+    </div>
+    <div class="step">
+      <span class="sn">03</span>
+      <div>
+        <h3>Move — one page, one task, at a time</h3>
+        <p>You don't need a five-year plan you'll abandon by March. You need the next right step. Nine sections, one task each, in order — so you always know exactly what to do next, from where you are today to where you're trying to get.</p>
+      </div>
+    </div>
   </div>
 </section>
 
